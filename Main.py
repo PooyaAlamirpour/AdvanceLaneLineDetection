@@ -11,11 +11,11 @@ nFrames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))              # Get the number
 fps = video.get(cv2.CAP_PROP_FPS)                               # Calculate fps of the video
 waitPerFrameInMillisec = int(1/fps * 1000/1)                    # Calculate waiting time between each frame
 
-success, input_image = video.read()
-height, width, layers = input_image.shape
+success, input_image = video.read()								# Load one frame of video
+height, width, layers = input_image.shape						# Get width and height of frame
 size = (width, height)
 out = cv2.VideoWriter('output_project_video.mp4', cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
-avg_left_point = 50
+avg_left_point = 50												# It is used for sometimes that it is not possible for detecting head of lane 
 avg_right_point = 240
 avg_left_point_list = []
 avg_right_point_list = []
@@ -25,12 +25,15 @@ def make_gradient_transform(img, sobel_kernel=3, hsv_thresh=(100, 255), sobel_th
     hls = cv2.cvtColor(img, cv2.COLOR_RGB2HLS)
 
     l_channel = hls[:, :, 1]  # Convert to HLS
-    s_channel = hls[:, :, 2]
+    s_channel = hls[:, :, 2]	
+	
+	# Switching between S and L channel
     if sl == 0:
         s_channel = hls[:, :, 2]
     else:
         s_channel = hls[:, :, 1]
 
+	# Sobel algorithm
     sobelx = cv2.Sobel(l_channel, cv2.CV_64F, 1, 0)
     abs_sobelx = np.absolute(sobelx)
     scaled_sobel = np.uint8(255 * abs_sobelx / np.max(abs_sobelx))
@@ -43,19 +46,21 @@ def make_gradient_transform(img, sobel_kernel=3, hsv_thresh=(100, 255), sobel_th
     s_binary = np.zeros_like(s_channel)
     s_binary[(s_channel >= hsv_thresh[0]) & (s_channel <= hsv_thresh[1])] = 1
 
+	# Combination sobel result and HSL result
     color_binary = np.dstack((np.zeros_like(sxbinary), sxbinary, s_binary)) * 255
 
     return color_binary
 
 def warp(img, src, dst):
-  img_size = (img.shape[1], img.shape[0])
-  offset = 100
+	img_size = (img.shape[1], img.shape[0])
+	offset = 100
+	
+	# Perspective Transform matrix and inverse matrix
+	M = cv2.getPerspectiveTransform(src, dst)
+	Minv = cv2.getPerspectiveTransform(dst, src)
+	warped = cv2.warpPerspective(img, M, img_size, flags=cv2.INTER_LINEAR)
 
-  M = cv2.getPerspectiveTransform(src, dst)
-  Minv = cv2.getPerspectiveTransform(dst, src)
-  warped = cv2.warpPerspective(img, M, img_size, flags=cv2.INTER_LINEAR)
-
-  return warped, Minv
+	return warped, Minv
 
 def make_binary(img, hsv_thresh=(100, 255)):
     img = np.copy(img)
@@ -78,11 +83,12 @@ def get_suitable_left_right_points(img):
     global avg_right_point_list
 
     center_of_rec_x = input_image.shape[1] / 2
-    center_of_rec_y = 460
-    far_from_center_x = 120
-    far_from_center_y = 30
+    center_of_rec_y = 460													# Define center for searching box
+    far_from_center_x = 120													# Width of search box
+    far_from_center_y = 30													# Height of search box
 
-    rec_top_right_x = center_of_rec_x + far_from_center_x
+	# Define search box coordinates
+    rec_top_right_x = center_of_rec_x + far_from_center_x					
     rec_top_right_y = center_of_rec_y + far_from_center_y
     rec_top_left_x = center_of_rec_x - far_from_center_x
     rec_top_left_y = center_of_rec_y + far_from_center_y
@@ -91,6 +97,7 @@ def get_suitable_left_right_points(img):
     rec_bottom_left_x = center_of_rec_x - far_from_center_x
     rec_bottom_left_y = center_of_rec_y - 0
 
+	# Crop search area
     cpy_src = np.copy(img)
     y1 = int(rec_bottom_left_y)
     y2 = int(rec_top_left_y)
@@ -100,9 +107,11 @@ def get_suitable_left_right_points(img):
     crop_image = cpy_src[y1:y2, x1:x2]
     crop_binary_image = make_binary(crop_image)
 
+	# Calculate histogram of the croped image
     bottom_half = crop_binary_image[crop_binary_image.shape[0] // 2:, :]
     hist_result = np.sum(bottom_half, axis=0)
 
+	# Dynamic threshold
     thresh = max(hist_result) / 3
     new_hist = hist_result[:] > (thresh)
     ls = [i for i, e in enumerate(new_hist) if e != 0]
@@ -116,7 +125,8 @@ def get_suitable_left_right_points(img):
 
     avg_left = 0
     avg_right = 0
-
+	
+	# Finding the location of lane based on the histogram data
     for index in ls:
         if ((index - tmp) > 2):
             if index < 125:
@@ -128,9 +138,9 @@ def get_suitable_left_right_points(img):
                 right_cat.append(tmp)
 
     if (len(left_cat) == 0):
-        avg_left = avg_left_point
+        avg_left = avg_left_point										# If there is not suitable data, it is used previous data
     else:
-        avg_left = sum(left_cat) / len(left_cat)
+        avg_left = sum(left_cat) / len(left_cat)						# Average of the found data for being more smoothly
 
     if (len(right_cat) == 0):
         avg_right = avg_right_point
@@ -140,7 +150,7 @@ def get_suitable_left_right_points(img):
     avg_left_point_list.append(avg_left)
     avg_right_point_list.append(avg_right)
 
-    tmp_left_avg = sum(avg_left_point_list) / len(avg_left_point_list)
+    tmp_left_avg = sum(avg_left_point_list) / len(avg_left_point_list)	# Average of the found data for being more smoothly
     tmp_right_avg = sum(avg_right_point_list) / len(avg_right_point_list)
 
     return tmp_left_avg, tmp_right_avg
@@ -335,6 +345,8 @@ def generate_data(binary_warped):
 def measure_curvature_pixels(binary_warped):
     ploty, left_fit, right_fit = generate_data(binary_warped)
     y_eval = np.max(ploty)
+	
+	# Calculate lane curvature
     left_curverad = ((1 + (2 * left_fit[0] * y_eval + left_fit[1]) ** 2) ** 1.5) / np.absolute(2 * left_fit[0])
     right_curverad = ((1 + (2 * right_fit[0] * y_eval + right_fit[1]) ** 2) ** 1.5) / np.absolute(2 * right_fit[0])
 
@@ -346,9 +358,12 @@ last_ploty = 0
 number_of_frame = 0;
 
 def getPreHistogram(binary_warped):
+	# Getting histogram data and converting to list
     hist_result = np.sum(binary_warped[binary_warped.shape[0] // 2:, :], axis=0)
     hist_thresh = max(hist_result) / 2
     new_hist = hist_result[:] > (hist_thresh)
+	
+	# Return histogram data as list
     ls = [i for i, e in enumerate(new_hist) if e != 0]
     return ls
 
@@ -358,15 +373,20 @@ def run():
     global last_ploty
     global number_of_frame
 
+	# Get one frame
     success, input_image = video.read()
+	
+	# Check if there is a frame
     if (success == True):
+		# Get top-right and top-left of the masked area dynamically
         (avg_left, avg_right) = get_suitable_left_right_points(input_image)
-
+		
         center_of_rec_x = input_image.shape[1] / 2
         center_of_rec_y = 460
         far_from_center_x = 120
         far_from_center_y = 20
-
+		
+		# Adjust the top of dynamic mask
         rec_top_right_x = center_of_rec_x - far_from_center_x + avg_right + 10
         rec_top_right_y = center_of_rec_y + far_from_center_y
         rec_top_left_x = center_of_rec_x - far_from_center_x + avg_left - 10
@@ -376,11 +396,13 @@ def run():
         top_right_x = rec_top_right_x
         top_right_y = rec_top_right_y
 
+		# Adjust the bottom of dynamic mask
         bottom_left_x = 120
         bottom_left_y = input_image.shape[0]
         bottom_right_x = 1240
         bottom_right_y = input_image.shape[0]
 
+		# Define source point for transforming
         src = np.float32(
             [
                 [top_left_x, top_left_y],  # top left
@@ -391,6 +413,8 @@ def run():
 
         img_size = (input_image.shape[1], input_image.shape[0])
         offset = 100
+		
+		# Define destination point for transforming
         dst = np.float32(
             [
                 [offset, offset],
@@ -400,20 +424,26 @@ def run():
             ])
 
         result_make_gradient_transform = make_gradient_transform(input_image, hsv_thresh=(100, 255), sobel_thresh=(60, 100), sl=0)
-
+		
+		# Transforming lanes
         colored_binary_warped, Minv = warp(result_make_gradient_transform, src, dst)
         binary_warped = make_binary(colored_binary_warped)
         warp_zero = np.zeros_like(binary_warped).astype(np.uint8)
         color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
 
+		# Finding left and right lane pixels
         leftx, lefty, rightx, righty, out_img = find_lane_pixels(binary_warped)
         left_fitx, right_fitx, ploty = fit_poly(binary_warped.shape, leftx, lefty, rightx, righty)
         left_curverad, right_curverad = measure_curvature_pixels(binary_warped)
         result = 0
 
+		# Get histogram list based on input image
         length_ls = len(getPreHistogram(binary_warped))
         improved = False
+		
+		# If the length of histogram list is more than 90, this condition will be run
         if length_ls > 90:
+			# Run algorithm by using 'L' channel of HSL and different parameters
             result_make_gradient_transform = make_gradient_transform(input_image, hsv_thresh=(180, 255), sobel_thresh=(60, 100), sl=1)
 
             colored_binary_warped, Minv = warp(result_make_gradient_transform, src, dst)
@@ -425,30 +455,34 @@ def run():
             left_fitx, right_fitx, ploty = fit_poly(binary_warped.shape, leftx, lefty, rightx, righty)
             left_curverad, right_curverad = measure_curvature_pixels(binary_warped)
             length_ls = len(getPreHistogram(binary_warped))
+			
+			# Average result for being more smoothly
             last_left_fitx = (left_fitx + last_left_fitx) / 2
             last_right_fitx = (right_fitx + last_right_fitx) / 2
             last_ploty = (ploty + last_ploty) / 2
             improved = True
 
+		# If previous condition is not run, this condition will be run
         if improved == False:
             if right_curverad > 10000 | length_ls > 90:
                 # last_left_fitx = left_fitx
                 # last_right_fitx = right_fitx
                 # last_ploty = ploty
-                print('Say something')
+                print('Nothing happen')
             else:
                 last_left_fitx = (left_fitx + last_left_fitx) / 2
                 last_right_fitx = (right_fitx + last_right_fitx) / 2
                 last_ploty = (ploty + last_ploty) / 2
-        ##########################################################################################
+
+		# Plotting down back the green area to the input frame
         pts_left = np.array([np.transpose(np.vstack([last_left_fitx, last_ploty]))])
         pts_right = np.array([np.flipud(np.transpose(np.vstack([last_right_fitx, last_ploty])))])
         pts = np.hstack((pts_left, pts_right))
         cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
         newwarp = cv2.warpPerspective(color_warp, Minv, (input_image.shape[1], input_image.shape[0]))
         result = cv2.addWeighted(input_image, 1, newwarp, 0.3, 0)
-
-
+		
+		# Write on the output video
         out.write(result)
         input_image = None
 
