@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="976a2651-8e7e-4f93-99b9-30c6122d0c85" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_masking_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_cal/calibration9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/binary_combo_example.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/color_fit_lines.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_output.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/undistort_output.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/warped_straight_lines.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_images/save_output_here.txt" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Code$Python.coverage" NAME="Python Coverage Results" MODIFIED="1578408302556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1900715970">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.47" value="1" />
+          <entry key="project.open.time.51" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.96" value="1" />
+          <entry key="project.opened" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="2996" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="2996" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="416" column="121" selection-start-line="416" selection-start-column="119" selection-end-line="416" selection-end-column="121" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <marker date="1578407432731" expanded="true" signature="13724:13961" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_masking_video.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="376" lean-forward="true" selection-start-line="376" selection-end-line="376" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#963#1761#0" />
+                <element signature="e#1790#2032#0" />
+                <element signature="e#2083#2469#0" />
+                <element signature="e#2516#4626#0" />
+                <element signature="e#4669#8205#0" />
+                <element signature="e#8246#9255#0" />
+                <element signature="e#9316#9702#0" />
+                <element signature="e#9747#12731#0" />
+                <element signature="e#12771#13206#0" />
+                <element signature="e#13257#13611#0" />
+                <element signature="e#13729#13959#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>find_lane_pixels</find>
+      <find>histogram</find>
+      <find>tmp = ls[0]</find>
+      <find>avg_left_point</find>
+      <find>avg_right_point</find>
+      <find>get_suitable_left_right_points</find>
+      <find>left_fit</find>
+      <find>his</find>
+      <find>histo</find>
+      <find>make_gradient_transform</find>
+      <find>zero</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/test_masking_video.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_masking_video.py" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Python" type="PythonConfigurationType" factoryName="Python">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pooya\AppData\Local\Programs\Python\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_masking_video.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="976a2651-8e7e-4f93-99b9-30c6122d0c85" name="Default Changelist" comment="" />
+      <created>1578151633257</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578151633257</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1705757" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19935691" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24973205" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.2368703" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.13826367" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49732047" weight="0.32995737" />
+      <window_info anchor="right" x="0" y="0" width="434" height="866" id="Documentation" order="4" sideWeight="0.5026795" side_tool="true" visible="true" weight="0.17803837" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49875623" weight="0.32995737" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_masking_video.py</url>
+          <line>385</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="416" column="121" selection-start-line="416" selection-start-column="119" selection-end-line="416" selection-end-column="121" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1578407432731" expanded="true" signature="13724:13961" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_masking_video.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="376" lean-forward="true" selection-start-line="376" selection-end-line="376" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#963#1761#0" />
+            <element signature="e#1790#2032#0" />
+            <element signature="e#2083#2469#0" />
+            <element signature="e#2516#4626#0" />
+            <element signature="e#4669#8205#0" />
+            <element signature="e#8246#9255#0" />
+            <element signature="e#9316#9702#0" />
+            <element signature="e#9747#12731#0" />
+            <element signature="e#12771#13206#0" />
+            <element signature="e#13257#13611#0" />
+            <element signature="e#13729#13959#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

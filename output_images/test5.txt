@@ -1,0 +1,1 @@
+result = make_gradient_transform(image, hsv_thresh=(170, 255), sobel_thresh=(20, 100))

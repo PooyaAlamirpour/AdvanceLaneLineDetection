@@ -1,0 +1,8 @@
+  %matplotlib inline
+  plt.imshow(undistorted)
+  corners[n - 1,0,1] = corners[n - 1,0,1] - 30
+  corners[n * m - 1, 0, 0] = corners[n * m - 1, 0, 0] - 20
+  corners[n * m - 1, 0, 1] = corners[n * m - 1, 0, 1] - 30
+  corners[(m - 1) * n,0,0] = corners[(m - 1) * n,0,0] - 20
+  corners[0,0,0] = corners[0,0,0] - 15
+  corners[0,0,1] = corners[0,0,1] - 5
