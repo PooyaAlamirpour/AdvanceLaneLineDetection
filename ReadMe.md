@@ -19,7 +19,7 @@ so it seems the first step might be calibrating the camera for undistorting the 
 For calibration, we must use a known picture. Why? Because based on the real data and known picture, we can find differences between them and then we can model a suitable transform matrix for converting a distorted image to normal and undistorted.
 One of the famous and suitable images for calibrating the camera is the Chessboard.
 
-<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Distorted Image" width="375" height="223" border="10" /></a>
+<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Chessboard Image" width="375" height="375" border="10" />
 
 The method is simple. Just find the chessboard in the image by using 'findChessboardCorners' method then put the output of this method as an input of calibrateCamera. That is all. See the below code for more precise.
 
@@ -32,7 +32,7 @@ undist = cv2.undistort(img, mtx, dist, None, mtx)
 
 You can see the output of this code as below:
 
-تصویری که فیش آی دیگه نیست
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1_undist.png" width="375" border="10" />
 
 There are some small tips which we have to know. What is the 'objpoints' and 'imgpoints'?
 The 'imgpoints' is each corner of the chessboard cells that are detected by the OpenCV. When the 'findChessboardCorners' can find corners of the chessboard, it sets 'true' for the 'ret' parameter. So we can be noticed there are some corners then we can pick corners point like below:
