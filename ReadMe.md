@@ -188,9 +188,9 @@ colored_binary_warped, Minv = warp(result_make_gradient_transform, src, dst)
 
 Let's again look at the histogram plot of the bird-view image. As you can see, there are two peaks; it is mean almost there are lanes there. Now, we will define a small window and try to slide it over the expected location. You can see the result here:
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_histogram.png" width="320" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_histogram.png" width="540" border="10" />
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_findingLane.png" width="320" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_findingLane.png" width="540" border="10" />
 
 Based on the found points for lane, we can define an equation, and based on that, we can draw a curved line on each frame of the video when we could detect it. In the previous project, we were not able to detect the curved lane. But by having a suitable equation we can do it now.
 
@@ -210,7 +210,7 @@ left_fitx, right_fitx, ploty = fit_poly(binary_warped.shape, leftx, lefty, right
 
 So based on the found equation, we can draw a green rectangle inside of the left and right lane. We have a fitted, curved path for the left and right of the road. Now it is time for plotted back down the created green rectangle onto the road. It is means we want to transform the green rectangle from bird-view to perspective view like below:
 
-تصویر مستطیل سبز
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_result.png" border="10" />
 
 We know how we can transform an image from perspective to bird-view. But what about the opposite of it? Do you remember that we have defined source and destination points for transferring? Now we can reverse them for finding a suitable matrix.
 
