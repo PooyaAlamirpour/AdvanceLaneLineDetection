@@ -96,16 +96,16 @@ I used 'offset' for putting a margin around the output image. You can see the re
 In this section, we want to extract suitable information from an image. In the previous project, we observed some important data that were missed. Because we used Color Channel for finding lane and under adverse light condition some part of the lane line would be missed. In this project, we want to combine two algorithms for solving that issue. At first, Let me introduce HSL Channel. 
 HSL (hue, saturation, lightness) and HSV (hue, saturation, value) are alternative representations of the RGB color model. HSL and HSV are both cylindrical geometries, with hue, their angular dimension, starting at the red primary at 0°, passing through the green primary at 120° and the blue primary at 240°, and then wrapping back to red at 360°. In each geometry, the central vertical axis comprises the neutral, achromatic, or gray colors, ranging from black at lightness 0 or value 0, the bottom, to white at lightness 1 or value 1, the top.
 
-نمودار اچ اس ال
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/HSL.png" width="280" border="10" />
 
 So briefly if you see two boxes that have same color, it means both of them to have almost the same H value and if one box has a lighter or darker color it means their 'I' value is different.
 For more precise, let see the difference between each value practically. On the 'test_images' folder, there is an image which is called 'straight_lines1'. 
 
-تصویر اصلی straight_lines1
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/test_images/straight_lines1.jpg" width="640" border="10" />
 
 Let see this image in tree H, S and L channel.
 
-تصویر تبدیل شده تصویر اصلی سه تا کانال
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/HSL_result.png" width="640" border="10" />
 
 Each image shows some features based on the origin image. As it is obvious, the 'S' channel shows the lane line better that other channel. This test gives us an idea for detecting lane lines in different light conditions.
 For completing our project, let introduce the 'Soble Algorithm' too. The Sobel Algorithm is used in image processing and computer vision, particularly within edge detection algorithms where it creates an image emphasizing edges. It seems to look like the 'Canny Algorithm' which was used in the previous project. Sobel detection refers to computing the gradient magnitude of an image using 3x3 filters. Where "gradient magnitude" is, for each a pixel, a number giving the absolute value of the rate of change in light intensity in the direction that maximizes this number.
