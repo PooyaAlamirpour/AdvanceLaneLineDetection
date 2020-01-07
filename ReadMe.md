@@ -138,7 +138,7 @@ We have discussed the benefit of using a mask on an image. In the below image yo
 
 As you see that the put mask is not exactly in the center in comparison with the lane line. First, watch this video:
 
-https://youtu.be/1kwTAMwuYc4
+<a href="https://youtu.be/1kwTAMwuYc4" target="_blank"><img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/bounded.jpg" width="375" height="223" border="10" /></a>
 
 When a car moves and turns, because of lateral motion, it might be you can not put a fixed mask so you can not expect that it is bounded the lane line completely. Of course, you can say we may make a large mask area. But this idea has a bug. When you choose a significant area for masking, it is mean you are selecting more detail of an image, and it might be added some deceptive data. So we have a restriction here. For solving this issue, I have implemented a dynamic masking algorithm. The idea of this algorithm is simple. There is a limited area in the center of the image that we expect there would be lane. So I start to search the inside of a rectangle that I have put to the center of the image. Here is the related part of creating the rectangle in the center of the image:
 
@@ -227,7 +227,9 @@ The `Minv` is the inverse matrix. Despite we complete our algorithm for finding 
 The `project_video.mp4` has tow main parts. The first and last seconds of the video are in suitable lighting conditions. In the middle of the video, there are 2 scenes that the lighting condition is adverse. Our algorithm can not work properly in that situation. For improving our work there are two approaches. First is tuning the parameters of the Sobel and HSL channel and second is a little bit more complex.
 let's talk about the second approach because the first approach will be achieved by try and error. The second approach talks about combining histogram and HSL channels. We were supposed to use the `S` channel. But sometimes the `L` channel has useful information too. The main challenge in the second approach is detecting when we can use `S` or `L.` For better selecting, I used histogram information. After converting the input image to binary, I got a histogram from the bounded area of the picture. If there would not be a peak or if there would be lots of unusual peaks, I use `L` channel instead of `S`, in otherwise, I use the `S` channel. The final video is downloadable here:
 
-https://www.youtube.com/watch?v=wKwqKegFnK8&list=PLChwywmfd8lqhyap8yrjOeALFLkJ5nRTv&index=5&t=0s
+
+<a href="https://www.youtube.com/watch?v=wKwqKegFnK8&list=PLChwywmfd8lqhyap8yrjOeALFLkJ5nRTv&index=5&t=0s" target="_blank"><img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/final_result.jpg" width="375" height="223" border="10" /></a>
+
 
 In this project, we used an equation for calculating lane curvature. This value can be used for real measurement. There is a ratio for converting pixel length or curvature to the meter. let's say that our camera image has 1280 relevant pixels in the y-dimension (remember, our image is perspective-transformed!). Therefore, to convert from pixels to real-world meter measurements, we can use:
 
