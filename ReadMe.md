@@ -15,13 +15,13 @@ At first, for making our implementation more realistic, let's talk about a techn
 
 ![Distorted Image](https://media-cdn.tripadvisor.com/media/photo-w/12/dc/90/3e/fish-eye-marine-park.jpg)
 
-so it seems the first step might be calibrating the camera for undistorting the gotten images. Like the previous project, we are going to use the favorite library which is named OpenCV. There is a method in this library that is named 'calibrateCamera'. The purpose of this method is transforming an image that is gotten by the Fish-Eye lens to a normal image without distorting. This act is called calibration.
+so it seems the first step might be calibrating the camera for undistorting the gotten images. Like the previous project, we are going to use the favorite library which is named OpenCV. There is a method in this library that is named `calibrateCamera`. The purpose of this method is transforming an image that is gotten by the Fish-Eye lens to a normal image without distorting. This act is called calibration.
 For calibration, we must use a known picture. Why? Because based on the real data and known picture, we can find differences between them and then we can model a suitable transform matrix for converting a distorted image to normal and undistorted.
 One of the famous and suitable images for calibrating the camera is the Chessboard.
 
 <img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Chessboard Image" width="280" height="280" border="10" />
 
-The method is simple. Just find the chessboard in the image by using 'findChessboardCorners' method then put the output of this method as an input of calibrateCamera. That is all. See the below code for more precise.
+The method is simple. Just find the chessboard in the image by using `findChessboardCorners` method then put the output of this method as an input of calibrateCamera. That is all. See the below code for more precise.
 
 ```python
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -34,8 +34,8 @@ You can see the output of this code as below:
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1_undist.png" width="640" border="10" />
 
-There are some small tips which we have to know. What is the 'objpoints' and 'imgpoints'?
-The 'imgpoints' is each corner of the chessboard cells that are detected by the OpenCV. When the 'findChessboardCorners' can find corners of the chessboard, it sets 'true' for the 'ret' parameter. So we can be noticed there are some corners then we can pick corners point like below:
+There are some small tips which we have to know. What is the `objpoints` and `imgpoints`?
+The `imgpoints` is each corner of the chessboard cells that are detected by the OpenCV. When the `findChessboardCorners` can find corners of the chessboard, it sets `true` for the `ret` parameter. So we can be noticed there are some corners then we can pick corners point like below:
 
 ```python
 imgpoints = []
@@ -43,7 +43,7 @@ if ret == True:
     imgpoints.append(corners)
 ```
 
-Firstly it seems that the concept of 'objpoints' is not intelligible but it is completely easy. Let me make an instance. Assume you are playing the puzzle game. At the beginning of the game, all pieces of the puzzle are disordered and you have to put each piece to the appropriate location. The location of each piece in the disordered state equivalent to the 'imgpoints' parameter and the location of each piece in the right position on the puzzle board is equivalent to the 'objpoints'. So we should create 'objpoints' by using below code:
+Firstly it seems that the concept of `objpoints` is not intelligible but it is completely easy. Let me make an instance. Assume you are playing the puzzle game. At the beginning of the game, all pieces of the puzzle are disordered and you have to put each piece to the appropriate location. The location of each piece in the disordered state equivalent to the `imgpoints` parameter and the location of each piece in the right position on the puzzle board is equivalent to the `objpoints`. So we should create `objpoints` by using below code:
 
 ```python
 objpoints = []
@@ -53,15 +53,15 @@ if ret == True:
     objpoints.append(objp) 
 ```
 
-The 'nx' and 'ny' are respectively equal to number of cells in each row and number of cells in each column in the chessboard. 	
+The `nx` and `ny` are respectively equal to number of cells in each row and number of cells in each column in the chessboard. 	
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration2_undist.png" width="640" border="10" />
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration3_undist.png" width="640" border="10" />
 
 ### Warping Perspective
-Assume you are on a road. Everything you see which are far from you, are in perspective. If we could see all the objects from the front-view instead of perspective, it would be great. It is amazing if you know that there is a method in the OpenCV library exactly for that purpose and it is called 'warpPerspective'. 
-The method is easy, set source and destination points and then use 'warpPerspective' for getting the warped image like below:
+Assume you are on a road. Everything you see which are far from you, are in perspective. If we could see all the objects from the front-view instead of perspective, it would be great. It is amazing if you know that there is a method in the OpenCV library exactly for that purpose and it is called `warpPerspective`. 
+The method is easy, set source and destination points and then use `warpPerspective` for getting the warped image like below:
 
 M = cv2.getPerspectiveTransform(src, dst)
 warped = cv2.warpPerspective(img, M, img_size, flags=cv2.INTER_LINEAR)
@@ -86,7 +86,7 @@ dst = np.float32(
 ])
 ```
 
-I used 'offset' for putting a margin around the output image. You can see the result here:
+I used `offset` for putting a margin around the output image. You can see the result here:
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration8_untrans.png" width="640" border="10" />
 
@@ -98,8 +98,8 @@ HSL (hue, saturation, lightness) and HSV (hue, saturation, value) are alternativ
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/HSL.png" width="280" border="10" />
 
-So briefly if you see two boxes that have same color, it means both of them to have almost the same H value and if one box has a lighter or darker color it means their 'I' value is different.
-For more precise, let see the difference between each value practically. On the 'test_images' folder, there is an image which is called 'straight_lines1'. 
+So briefly if you see two boxes that have same color, it means both of them to have almost the same H value and if one box has a lighter or darker color it means their `I` value is different.
+For more precise, let see the difference between each value practically. On the `test_images` folder, there is an image which is called `straight_lines1`. 
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/test_images/straight_lines1.jpg" border="10" />
 
@@ -107,9 +107,9 @@ Let see this image in tree H, S and L channel.
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/HSL_result.png" border="10" />
 
-Each image shows some features based on the origin image. As it is obvious, the 'S' channel shows the lane line better that other channel. This test gives us an idea for detecting lane lines in different light conditions.
-For completing our project, let introduce the 'Soble Algorithm' too. The Sobel Algorithm is used in image processing and computer vision, particularly within edge detection algorithms where it creates an image emphasizing edges. It seems to look like the 'Canny Algorithm' which was used in the previous project. Sobel detection refers to computing the gradient magnitude of an image using 3x3 filters. Where "gradient magnitude" is, for each a pixel, a number giving the absolute value of the rate of change in light intensity in the direction that maximizes this number.
-Canny edge detection goes a bit further by removing speckle noise with a low pass filter first, then applying a Sobel filter, and then doing non-maximum suppression to pick out the best pixel for edges when there are multiple possibilities in a local neighborhood. That's a simplification, but basically it’s smarter than just applying a threshold to a Sobel filter. So briefly we know that there is a Sobel engine inner of the Canny Algorithm. In this project, we want to use the Sobel Algorithm by putting some thresholds. You can see my implementation here:
+Each image shows some features based on the origin image. As it is obvious, the `S` channel shows the lane line better that other channel. This test gives us an idea for detecting lane lines in different light conditions.
+For completing our project, let introduce the `Soble Algorithm` too. The Sobel Algorithm is used in image processing and computer vision, particularly within edge detection algorithms where it creates an image emphasizing edges. It seems to look like the `Canny Algorithm` which was used in the previous project. Sobel detection refers to computing the gradient magnitude of an image using 3x3 filters. Where "gradient magnitude" is, for each a pixel, a number giving the absolute value of the rate of change in light intensity in the direction that maximizes this number.
+Canny edge detection goes a bit further by removing speckle noise with a low pass filter first, then applying a Sobel filter, and then doing non-maximum suppression to pick out the best pixel for edges when there are multiple possibilities in a local neighborhood. That`s a simplification, but basically it’s smarter than just applying a threshold to a Sobel filter. So briefly we know that there is a Sobel engine inner of the Canny Algorithm. In this project, we want to use the Sobel Algorithm by putting some thresholds. You can see my implementation here:
 
 ```python
 img = np.copy(img)
@@ -125,11 +125,11 @@ s_binary[(s_channel >= hsv_thresh[0]) & (s_channel <= hsv_thresh[1])] = 1
 color_binary = np.dstack((np.zeros_like(sxbinary), sxbinary, s_binary)) * 255
 ```
 
-You can use the Sobel Algorithm in any direction you want. I used it in 'X' axis. I used two kinds of thresholds here. One for 'S' channel and another for the 'Sobel Algorithm'. So based on the defined thresholds I can change the efficacy of my algorithm. You can see result below:
+You can use the Sobel Algorithm in any direction you want. I used it in `X` axis. I used two kinds of thresholds here. One for `S` channel and another for the `Sobel Algorithm`. So based on the defined thresholds I can change the efficacy of my algorithm. You can see result below:
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_binary.png" border="10" />
 
-There are two colors in the pictures. One is green, and another is blue. Both of them are the output of HSL and Sobel, which are combined. So obviously you can see all the critical information remained, and other un-useful data was removed. It is amazing. This image is called 'Binary Image'.
+There are two colors in the pictures. One is green, and another is blue. Both of them are the output of HSL and Sobel, which are combined. So obviously you can see all the critical information remained, and other un-useful data was removed. It is amazing. This image is called `Binary Image`.
 
 ### Defining Masking
 We have discussed the benefit of using a mask on an image. In the below image you can see a mask which bounds a main part of the road. 
@@ -186,7 +186,7 @@ colored_binary_warped, Minv = warp(result_make_gradient_transform, src, dst)
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/bird_view.png" border="10" />
 
-Let's again look at the histogram plot of the bird-view image. As you can see, there are two peaks; it is mean almost there are lanes there. Now, we will define a small window and try to slide it over the expected location. You can see the result here:
+let's again look at the histogram plot of the bird-view image. As you can see, there are two peaks; it is mean almost there are lanes there. Now, we will define a small window and try to slide it over the expected location. You can see the result here:
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_histogram.png" width="540" border="10" />
 
@@ -214,18 +214,20 @@ So based on the found equation, we can draw a green rectangle inside of the left
 
 We know how we can transform an image from perspective to bird-view. But what about the opposite of it? Do you remember that we have defined source and destination points for transferring? Now we can reverse them for finding a suitable matrix.
 
+```python
 newwarp = cv2.warpPerspective(color_warp, Minv, (input_image.shape[1], input_image.shape[0])) 
 result = cv2.addWeighted(input_image, 1, newwarp, 0.3, 0)
+```
 
-The 'Minv' is the inverse matrix. Despite we complete our algorithm for finding lane in the road but our story is not ended. 
+The `Minv` is the inverse matrix. Despite we complete our algorithm for finding lane in the road but our story is not ended. 
 
 ### Improving
-The 'project_video.mp4' has tow main parts. The first and last seconds of the video are in suitable lighting conditions. In the middle of the video, there are 2 scenes that the lighting condition is adverse. Our algorithm can not work properly in that situation. For improving our work there are two approaches. First is tuning the parameters of the Sobel and HSL channel and second is a little bit more complex.
-Let's talk about the second approach because the first approach will be achieved by try and error. The second approach talks about combining histogram and HSL channels. We were supposed to use the 'S' channel. But sometimes the 'L' channel has useful information too. The main challenge in the second approach is detecting when we can use 'S' or 'L.' For better selecting, I used histogram information. After converting the input image to binary, I got a histogram from the bounded area of the picture. If there would not be a peak or if there would be lots of unusual peaks, I use 'L' channel instead of 'S', in otherwise, I use the 'S' channel. The final video is downloadable here:
+The `project_video.mp4` has tow main parts. The first and last seconds of the video are in suitable lighting conditions. In the middle of the video, there are 2 scenes that the lighting condition is adverse. Our algorithm can not work properly in that situation. For improving our work there are two approaches. First is tuning the parameters of the Sobel and HSL channel and second is a little bit more complex.
+let's talk about the second approach because the first approach will be achieved by try and error. The second approach talks about combining histogram and HSL channels. We were supposed to use the `S` channel. But sometimes the `L` channel has useful information too. The main challenge in the second approach is detecting when we can use `S` or `L.` For better selecting, I used histogram information. After converting the input image to binary, I got a histogram from the bounded area of the picture. If there would not be a peak or if there would be lots of unusual peaks, I use `L` channel instead of `S`, in otherwise, I use the `S` channel. The final video is downloadable here:
 
 https://www.youtube.com/watch?v=wKwqKegFnK8&list=PLChwywmfd8lqhyap8yrjOeALFLkJ5nRTv&index=5&t=0s
 
-In this project, we used an equation for calculating lane curvature. This value can be used for real measurement. There is a ratio for converting pixel length or curvature to the meter. Let's say that our camera image has 1280 relevant pixels in the y-dimension (remember, our image is perspective-transformed!). Therefore, to convert from pixels to real-world meter measurements, we can use:
+In this project, we used an equation for calculating lane curvature. This value can be used for real measurement. There is a ratio for converting pixel length or curvature to the meter. let's say that our camera image has 1280 relevant pixels in the y-dimension (remember, our image is perspective-transformed!). Therefore, to convert from pixels to real-world meter measurements, we can use:
 
 ```python
 ym_per_pix = 30/720 # meters per pixel in y dimension
@@ -240,6 +242,8 @@ y_eval = np.max(ploty)
 left_curverad = ((1 + (2*left_fit_cr[0] * y_eval * ym_per_pix + left_fit_cr[1]) ** 2) ** 1.5) / np.absolute(2 * left_fit_cr[0])
 right_curverad = ((1 + (2*right_fit_cr[0] * y_eval * ym_per_pix + right_fit_cr[1]) ** 2) ** 1.5) / np.absolute(2 * right_fit_cr[0])
 ```
+
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/Radius_of_Curvatue.png" border="10" />
 
 ### Refrence
 * [HSL and HSV](https://en.wikipedia.org/wiki/HSL_and_HSV)
