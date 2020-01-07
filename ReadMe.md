@@ -101,7 +101,7 @@ HSL (hue, saturation, lightness) and HSV (hue, saturation, value) are alternativ
 So briefly if you see two boxes that have same color, it means both of them to have almost the same H value and if one box has a lighter or darker color it means their 'I' value is different.
 For more precise, let see the difference between each value practically. On the 'test_images' folder, there is an image which is called 'straight_lines1'. 
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/test_images/straight_lines1.jpg" width="640" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/test_images/straight_lines1.jpg" border="10" />
 
 Let see this image in tree H, S and L channel.
 
@@ -151,11 +151,11 @@ crop_image = cpy_src[y1:y2, x1:x2]
 crop_binary_image = make_binary(crop_image)
 ```
 
-یک تصویر با یه مستطیل قرمز رنگ روی تصویر باینری برای نمایش مستطیل انتخاب شروع ماسک کردن
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/expected_area.jpg" border="10" />
 
 For finding lanes inside of this rectangle I used Histogram Plot. 
 
-تصویر هیستوگرام با دو تا قله
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_histogram.png" width="280" border="10" />
 
 This plot shows there are 2 lines because of 2 peaks. So based on the location of them we can realize approximately the start position of our mask. But if there would be 3 peaks, what is the solution? We are always supposed to select 2 peaks that are near together. Now we can set the start points of our mask. In the same way, we can define the endpoints of the mask. So we have dynamic masking. 
 
