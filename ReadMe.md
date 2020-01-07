@@ -208,6 +208,8 @@ righty = nonzeroy[right_lane_inds]
 left_fitx, right_fitx, ploty = fit_poly(binary_warped.shape, leftx, lefty, rightx, righty)
 ```
 
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_findingCurve.png" border="10" />
+
 So based on the found equation, we can draw a green rectangle inside of the left and right lane. We have a fitted, curved path for the left and right of the road. Now it is time for plotted back down the created green rectangle onto the road. It is means we want to transform the green rectangle from bird-view to perspective view like below:
 
 <img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_result.png" border="10" />
