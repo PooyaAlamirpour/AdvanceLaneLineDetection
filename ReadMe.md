@@ -19,7 +19,7 @@ so it seems the first step might be calibrating the camera for undistorting the 
 For calibration, we must use a known picture. Why? Because based on the real data and known picture, we can find differences between them and then we can model a suitable transform matrix for converting a distorted image to normal and undistorted.
 One of the famous and suitable images for calibrating the camera is the Chessboard.
 
-<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Chessboard Image" width="375" height="375" border="10" />
+<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Chessboard Image" width="280" height="375" border="10" />
 
 The method is simple. Just find the chessboard in the image by using 'findChessboardCorners' method then put the output of this method as an input of calibrateCamera. That is all. See the below code for more precise.
 
@@ -32,7 +32,7 @@ undist = cv2.undistort(img, mtx, dist, None, mtx)
 
 You can see the output of this code as below:
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1_undist.png" width="540" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1_undist.png" width="640" border="10" />
 
 There are some small tips which we have to know. What is the 'objpoints' and 'imgpoints'?
 The 'imgpoints' is each corner of the chessboard cells that are detected by the OpenCV. When the 'findChessboardCorners' can find corners of the chessboard, it sets 'true' for the 'ret' parameter. So we can be noticed there are some corners then we can pick corners point like below:
@@ -55,9 +55,9 @@ if ret == True:
 
 The 'nx' and 'ny' are respectively equal to number of cells in each row and number of cells in each column in the chessboard. 	
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration2_undist.png" width="540" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration2_undist.png" width="640" border="10" />
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration3_undist.png" width="540" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration3_undist.png" width="640" border="10" />
 
 ### Warping Perspective
 Assume you are on a road. Everything you see which are far from you, are in perspective. If we could see all the objects from the front-view instead of perspective, it would be great. It is amazing if you know that there is a method in the OpenCV library exactly for that purpose and it is called 'warpPerspective'. 
@@ -88,7 +88,9 @@ dst = np.float32(
 
 I used 'offset' for putting a margin around the output image. You can see the result here:
 
-چندتا تصویر که از نظر پرسپکتیو اصلاح شده اند
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration8_untrans.png" width="640" border="10" />
+
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration11_untrans.png" width="640" border="10" />
 
 ### Binary Image
 In this section, we want to extract suitable information from an image. In the previous project, we observed some important data that were missed. Because we used Color Channel for finding lane and under adverse light condition some part of the lane line would be missed. In this project, we want to combine two algorithms for solving that issue. At first, Let me introduce HSL Channel. 
