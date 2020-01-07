@@ -19,7 +19,7 @@ so it seems the first step might be calibrating the camera for undistorting the 
 For calibration, we must use a known picture. Why? Because based on the real data and known picture, we can find differences between them and then we can model a suitable transform matrix for converting a distorted image to normal and undistorted.
 One of the famous and suitable images for calibrating the camera is the Chessboard.
 
-<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Chessboard Image" width="280" height="375" border="10" />
+<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg" alt="Chessboard Image" width="280" height="280" border="10" />
 
 The method is simple. Just find the chessboard in the image by using 'findChessboardCorners' method then put the output of this method as an input of calibrateCamera. That is all. See the below code for more precise.
 
@@ -105,7 +105,7 @@ For more precise, let see the difference between each value practically. On the 
 
 Let see this image in tree H, S and L channel.
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/HSL_result.png" width="640" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/HSL_result.png" border="10" />
 
 Each image shows some features based on the origin image. As it is obvious, the 'S' channel shows the lane line better that other channel. This test gives us an idea for detecting lane lines in different light conditions.
 For completing our project, let introduce the 'Soble Algorithm' too. The Sobel Algorithm is used in image processing and computer vision, particularly within edge detection algorithms where it creates an image emphasizing edges. It seems to look like the 'Canny Algorithm' which was used in the previous project. Sobel detection refers to computing the gradient magnitude of an image using 3x3 filters. Where "gradient magnitude" is, for each a pixel, a number giving the absolute value of the rate of change in light intensity in the direction that maximizes this number.
@@ -127,14 +127,14 @@ color_binary = np.dstack((np.zeros_like(sxbinary), sxbinary, s_binary)) * 255
 
 You can use the Sobel Algorithm in any direction you want. I used it in 'X' axis. I used two kinds of thresholds here. One for 'S' channel and another for the 'Sobel Algorithm'. So based on the defined thresholds I can change the efficacy of my algorithm. You can see result below:
 
-تصویر باینری شده straight_lines1
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_binary.png" border="10" />
 
 There are two colors in the pictures. One is green, and another is blue. Both of them are the output of HSL and Sobel, which are combined. So obviously you can see all the critical information remained, and other un-useful data was removed. It is amazing. This image is called 'Binary Image'.
 
 ### Defining Masking
-We have discussed the benefit of using a mask on an image. In the below image you can a mask which bounds a main part of the road. 
+We have discussed the benefit of using a mask on an image. In the below image you can see a mask which bounds a main part of the road. 
 
-تصویر با ماسک straight_lines1
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/masking.png" border="10" />
 
 As you see that the put mask is not exactly in the center in comparison with the lane line. First, watch this video:
 
