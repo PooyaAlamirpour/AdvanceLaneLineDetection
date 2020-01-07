@@ -155,7 +155,7 @@ crop_binary_image = make_binary(crop_image)
 
 For finding lanes inside of this rectangle I used Histogram Plot. 
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_histogram.png" width="280" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines2_histogram.png" width="320" border="10" />
 
 This plot shows there are 2 lines because of 2 peaks. So based on the location of them we can realize approximately the start position of our mask. But if there would be 3 peaks, what is the solution? We are always supposed to select 2 peaks that are near together. Now we can set the start points of our mask. In the same way, we can define the endpoints of the mask. So we have dynamic masking. 
 
@@ -184,13 +184,13 @@ dst = np.float32(
 
 colored_binary_warped, Minv = warp(result_make_gradient_transform, src, dst)
 
-نمای خط از بالا
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/pictures/bird_view.png" border="10" />
 
 Let's again look at the histogram plot of the bird-view image. As you can see, there are two peaks; it is mean almost there are lanes there. Now, we will define a small window and try to slide it over the expected location. You can see the result here:
 
-تصویر هیستوگرام با دوتا قله
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_histogram.png" width="320" border="10" />
 
-تصویر اسلاید شده
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/output_images/straight_lines1_findingLane.png" width="320" border="10" />
 
 Based on the found points for lane, we can define an equation, and based on that, we can draw a curved line on each frame of the video when we could detect it. In the previous project, we were not able to detect the curved lane. But by having a suitable equation we can do it now.
 
