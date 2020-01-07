@@ -32,7 +32,7 @@ undist = cv2.undistort(img, mtx, dist, None, mtx)
 
 You can see the output of this code as below:
 
-<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1_undist.png" width="375" border="10" />
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1_undist.png" width="540" border="10" />
 
 There are some small tips which we have to know. What is the 'objpoints' and 'imgpoints'?
 The 'imgpoints' is each corner of the chessboard cells that are detected by the OpenCV. When the 'findChessboardCorners' can find corners of the chessboard, it sets 'true' for the 'ret' parameter. So we can be noticed there are some corners then we can pick corners point like below:
@@ -55,7 +55,9 @@ if ret == True:
 
 The 'nx' and 'ny' are respectively equal to number of cells in each row and number of cells in each column in the chessboard. 	
 
-چند نمونه از تصویرهایی که اصلاح شده اند
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration2_undist.png" width="540" border="10" />
+
+<img src="https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration3_undist.png" width="540" border="10" />
 
 ### Warping Perspective
 Assume you are on a road. Everything you see which are far from you, are in perspective. If we could see all the objects from the front-view instead of perspective, it would be great. It is amazing if you know that there is a method in the OpenCV library exactly for that purpose and it is called 'warpPerspective'. 
