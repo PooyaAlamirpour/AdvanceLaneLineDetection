@@ -13,13 +13,13 @@ We are supposed to talk about the following steps:
 ### Camera Calibration
 At first, for making our implementation more realistic, let's talk about a technique which is called Camera Calibration. As you know, there are some types of lens which are used for any situation. One of them is called Fish-Eye. If you get an image by using that lens you will see a distorted image like below:
 
-![Distorted Image](https://github.com/PooyaAlamirpour/AdvanceLaneLineDetection/blob/master/camera_cal/calibration1.jpg)
+![Distorted Image](https://media-cdn.tripadvisor.com/media/photo-w/12/dc/90/3e/fish-eye-marine-park.jpg)
 
 so it seems the first step might be calibrating the camera for undistorting the gotten images. Like the previous project, we are going to use the favorite library which is named OpenCV. There is a method in this library that is named 'calibrateCamera'. The purpose of this method is transforming an image that is gotten by the Fish-Eye lens to a normal image without distorting. This act is called calibration.
 For calibration, we must use a known picture. Why? Because based on the real data and known picture, we can find differences between them and then we can model a suitable transform matrix for converting a distorted image to normal and undistorted.
 One of the famous and suitable images for calibrating the camera is the Chessboard.
 
-عکس چس بورد
+![Chessboard Image](https://render.fineartamerica.com/images/rendered/default/print/8.000/7.875/break/images-medium-5/blank-chess-board-in-black-and-white-aarrows.jpg)
 
 The method is simple. Just find the chessboard in the image by using 'findChessboardCorners' method then put the output of this method as an input of calibrateCamera. That is all. See the below code for more precise.
 
