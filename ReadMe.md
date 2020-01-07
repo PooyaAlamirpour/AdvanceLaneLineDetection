@@ -15,6 +15,7 @@ At first, for making our implementation more realistic, let's talk about a techn
 
 تصویر فیش آی
 
+
 so it seems the first step might be calibrating the camera for undistorting the gotten images. Like the previous project, we are going to use the favorite library which is named OpenCV. There is a method in this library that is named 'calibrateCamera'. The purpose of this method is transforming an image that is gotten by the Fish-Eye lens to a normal image without distorting. This act is called calibration.
 For calibration, we must use a known picture. Why? Because based on the real data and known picture, we can find differences between them and then we can model a suitable transform matrix for converting a distorted image to normal and undistorted.
 One of the famous and suitable images for calibrating the camera is the Chessboard.
@@ -237,6 +238,6 @@ left_curverad = ((1 + (2*left_fit_cr[0] * y_eval * ym_per_pix + left_fit_cr[1]) 
 right_curverad = ((1 + (2*right_fit_cr[0] * y_eval * ym_per_pix + right_fit_cr[1]) ** 2) ** 1.5) / np.absolute(2 * right_fit_cr[0])
 ```
 
-Refrence
-* HSL and HSV -> https://en.wikipedia.org/wiki/HSL_and_HSV
-* Sobel operator -> https://en.wikipedia.org/wiki/Sobel_operator
+### Refrence
+* [HSL and HSV](https://en.wikipedia.org/wiki/HSL_and_HSV)
+* [Sobel operator](https://en.wikipedia.org/wiki/Sobel_operator)
